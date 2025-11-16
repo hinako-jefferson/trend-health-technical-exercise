@@ -13,7 +13,10 @@ def db_connect():
     return conn
 
 def get_file_names():
-    files = [for f in os.listdir(FILE_PATH) if f.endswith(FILE_EXT) and os.path.isfile(os.path.join(f))]
+    # creates a list of files in data directory with specified extension. This is under the assumption that all files in the directory 
+    # will be of the same type (e.g., .csv). This can be good for ignoring junk files, but I can see how it might be limiting in some scenarios.
+    files = [f for f in os.listdir(FILE_PATH) 
+             if f.endswith(FILE_EXT) and os.path.isfile(os.path.join(FILE_PATH, f))]
     return files
 
 def extract_and_load(file, conn):
