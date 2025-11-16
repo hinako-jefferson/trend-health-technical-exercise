@@ -2,24 +2,26 @@
 
 -- Source: CTA - Ridership - Bus Routes - Daily Totals by Route
 CREATE TABLE IF NOT EXISTS daily_ridership_bus_routes(
-route text primary key,
-date floating_timestamp primary key,
+route text not null,
+date floating_timestamp not null,
 daytype text,
-rides number
+rides number,
+primary key (route, date)
 );
 
 -- Source: CTA - Ridership - 'L' Stations - Daily Totals by Station
 CREATE TABLE IF NOT EXISTS daily_ridership_l_stations(
-station_id number primary key,
+station_id number not null,
 stationname text,
-date floating_timestamp primary key,
+date floating_timestamp not null,
 daytype text,
-rides number
+rides number,
+primary key (station_id, date)
 );
 
 -- Source: CTA - Ridership - Annual Boarding Totals
 CREATE TABLE IF NOT EXISTS annual_boarding_totals(
-year number primary key,
+year number primary key not null,
 bus number,
 paratransit number,
 rail number,
