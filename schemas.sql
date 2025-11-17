@@ -1,7 +1,4 @@
 -- create tables 
-DROP TABLE IF EXISTS daily_ridership_bus_routes;
-DROP TABLE IF EXISTS daily_ridership_l_stations;
-DROP TABLE IF EXISTS annual_boarding_totals;
 
 -- Source: CTA - Ridership - Bus Routes - Daily Totals by Route
 CREATE TABLE IF NOT EXISTS daily_ridership_bus_routes(

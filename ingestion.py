@@ -30,6 +30,15 @@ def extract_and_load(file, conn):
     if FILE_EXT == '.csv':
         df = pd.read_csv(FILE_PATH+'/'+file)
 
+    # normalize common columns so SQLite stores dates in a consistent, comparable format
+    # convert date strings like '11/01/2014' -> '2014-11-01' (ISO) to allow proper date comparisons
+    if 'date' in df.columns:
+        df['date'] = pd.to_datetime(df['date'], format='%m/%d/%Y', errors='coerce').dt.strftime('%Y-%m-%d')
+
+    # normalize rides column: remove thousands separators and convert to integer
+    if 'rides' in df.columns:
+        df['rides'] = pd.to_numeric(df['rides'].astype(str).str.replace(',', ''), errors='coerce').fillna(0).astype(int)
+
     # drop duplicate rows (probably not necessary for this dataset, but good practice)
     df.drop_duplicates(inplace=True)
 
