@@ -69,10 +69,10 @@ def main():
     for file in file_list:
         extract_and_load(file, conn)
         print(f"Loaded data from {file} into database.")
-    print("Data loading complete.")
 
     conn.commit()
     conn.close()
 
 if __name__ == "__main__":
     main()
+    print("Data load complete.")
