@@ -57,3 +57,6 @@ This script needs to be ran first in order to
 - Create SQLite database and tables
 - Ingest CTA data
 - Populate the data into the SQLite tables
+
+### 4. Execute analysis.ipynb
+Once the data is loaded, this script will conduct analysis on the collected data. The data points to be explored and the afterthoughts are documented on the analysis.ipynb script.
