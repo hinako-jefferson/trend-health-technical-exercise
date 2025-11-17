@@ -1,9 +1,12 @@
 -- create tables 
+DROP TABLE IF EXISTS daily_ridership_bus_routes;
+DROP TABLE IF EXISTS daily_ridership_l_stations;
+DROP TABLE IF EXISTS annual_boarding_totals;
 
 -- Source: CTA - Ridership - Bus Routes - Daily Totals by Route
 CREATE TABLE IF NOT EXISTS daily_ridership_bus_routes(
 route text not null,
-date floating_timestamp not null,
+date date not null,
 daytype text,
 rides number,
 primary key (route, date)
@@ -13,7 +16,7 @@ primary key (route, date)
 CREATE TABLE IF NOT EXISTS daily_ridership_l_stations(
 station_id number not null,
 stationname text,
-date floating_timestamp not null,
+date date not null,
 daytype text,
 rides number,
 primary key (station_id, date)
